@@ -3,12 +3,13 @@ import { onMounted, ref } from 'vue'
 import { RouterLink, RouterView } from 'vue-router'
 import { getPosts } from './actions/getPosts'
 import type { IPost } from './admin-types'
-import { _debounce } from '@/helper/util'
+import { _debounce, openModal } from '@/helper/util'
 // import HelloWorld from './components/HelloWorld.vue'
 import Pagination from '@/components/pagination/LaravelVuePagination.vue'
 import { Alert } from '@/helper/SweetAlert'
 import { deletePost } from './actions/deletePost'
 import { showError } from '@/helper/ToastNotification'
+import UploadImage from './components/UploadImage.vue'
 
 const posts = ref<any>([])
 const query = ref<string>('')
@@ -39,6 +40,14 @@ function removePost(id: number) {
   })
 }
 
+const currentPostID=ref<number>(0);
+
+function showModal(postId:number) {
+  openModal(postId,'uploadPostImage').then((postID)=>{
+    currentPostID.value=postID as number;
+  })
+}
+
 onMounted(async () => {
   showPosts()
 })
@@ -46,8 +55,9 @@ onMounted(async () => {
 
 <template>
   <div class="row">
-    <div class="col-md-6">
+    <div class="col-md-10">
       <h3>List post</h3>
+      <UploadImage @refreshPostTable="showPosts" :post-id="currentPostID" />
       <br />
       <br />
       <br />
@@ -68,7 +78,7 @@ onMounted(async () => {
                 class="form-control"
                 placeholder="search..."
               />
-              <span v-if="loadingStatus" style="color: blue;"> <b>Loading.....</b> </span>
+              <span v-if="loadingStatus" style="color: blue"> <b>Loading.....</b> </span>
             </div>
           </div>
 
@@ -76,8 +86,10 @@ onMounted(async () => {
             <thead>
               <tr>
                 <td>ID</td>
+                <td>Image</td>
                 <td>Post title</td>
                 <td>Post content</td>
+                <td>Upload</td>
 
                 <td>Update</td>
                 <td>Delete</td>
@@ -87,8 +99,17 @@ onMounted(async () => {
             <tbody v-for="post in posts?.data" :key="post.id">
               <tr>
                 <td>{{ post.id }}</td>
+                <td>
+                  <img :src="post.image" style="height: 55px;height: 55px;" alt="image">
+                </td>
+
                 <td>{{ post.title }}</td>
                 <td>{{ post.post_content }}</td>
+                <td>
+                  <button class="btn btn-outline-secondary btn-sm" @click="showModal(post.id)">
+                    Upload-image
+                  </button>
+                </td>
 
                 <td><button class="btn btn-outline-primary btn-sm">Update</button></td>
                 <td>

@@ -50,7 +50,7 @@ async function login() {
 
 <template>
   <div class="row">
-    <div class="card">
+    <div class="card" id="login-button">
       <div class="card-header"><h3>Login</h3></div>
       <div class="card-body">
         <form action="" @submit.prevent="login">
@@ -74,7 +74,7 @@ async function login() {
 
             <Error :Vdata="v$.password.$errors">
               <input
-                type="text"
+                type="password"
                 @blur="v$.password.$touch"
                 placeholder="Password"
                 v-model="loginUserInput.password"
@@ -88,7 +88,7 @@ async function login() {
             <RouterLink to="/register">Create an account</RouterLink>
           </div>
           <br />
-          <div class="form-group">
+          <div class="form-group" >
             <BaseBtn
               class="btn w-100 btn-primary btn-block"
               :loading="loadingStatus"
