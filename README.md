@@ -20,6 +20,8 @@ Steps to run this project:
 
 3. [Vue 3 -toastnofication]https://github.com/Maronato/vue-toastification/tree/next
 
+![vt](https://i.imgur.com/i2PMcTq.gif)
+
 Light, easy and beautiful toasts!
 
 Wanna try it out? Check out the [live demo](https://maronato.github.io/vue-toastification/)!
