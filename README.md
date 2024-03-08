@@ -15,8 +15,8 @@ Steps to run this project:
 
 1. [Vue-validator]https://vuelidate-next.netlify.app/ 
 
-   `npm install @vuelidate/core @vuelidate/validators` 
-   `yarn install @vuelidate/core @vuelidate/validators` 
+   - `npm install @vuelidate/core @vuelidate/validators` 
+   - `yarn install @vuelidate/core @vuelidate/validators` 
 
 
 
