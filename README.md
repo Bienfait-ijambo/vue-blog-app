@@ -15,10 +15,22 @@ Steps to run this project:
 
 1. [Vue-validator]https://vuelidate-next.netlify.app/ 
 
+   `npm install @vuelidate/core @vuelidate/validators` 
+   `yarn install @vuelidate/core @vuelidate/validators` 
+
+
+
 2. [Vue-sweetAlert2]https://www.npmjs.com/package/vue-sweetalert2
+
+    `npm i vue-sweetalert2` 
+    `yarn i vue-sweetalert2` 
 
 
 3. [Vue 3 -toastnofication]https://github.com/Maronato/vue-toastification/tree/next
+
+     `npm install --save vue-toastification@next` 
+     `yarn install --save vue-toastification@next` 
+
 
 ![vt](https://i.imgur.com/i2PMcTq.gif)
 
